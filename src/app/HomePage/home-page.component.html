@@ -1,0 +1,282 @@
+<body>
+<div class="container">
+  <!-- Content here -->
+  <div class="row">
+    <div class="col-2"></div>
+
+    <div class="col-6">
+<!--      <button *ngIf="check" (click)="logout()">Logout</button>-->
+      <!--Modals update user-->
+      <ng-template #updateUser let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">Update User</h4>
+        </div>
+        <div class="modal-body">
+          <form name="form" [formGroup]="updateForm" (ngSubmit)="onSubmitUpdate(dataUser.id)">
+            <div class="position-relative form-group">
+              <label for="name">Name</label>
+              <input name="name" minlength="4" formControlName="name" type="text" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && checkUpdateForm?.name?.errors }" (input)="existId = false">
+              <div *ngIf="submitted && checkUpdateForm?.name?.errors" class="invalid-feedback">
+                <div *ngIf="checkUpdateForm?.name?.errors?.required">Nhập tên</div>
+                <!--              <div *ngIf="f.name.errors.minlength">Vui lòng nhập tên lớn hơn 4 kí tự</div>-->
+              </div>
+            </div>
+            <div class="position-relative form-group">
+              <label for="email"> Emai;</label>
+              <input name="email" pattern="^[\w-\._\+%]+@(?:[\w-]+\.)+[\w]{2,6}$" formControlName="email" type="text"
+                     class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && checkUpdateForm?.email?.errors }">
+              <div *ngIf="submitted && checkUpdateForm?.email?.errors" class="invalid-feedback">
+                <div *ngIf="checkUpdateForm?.email?.errors?.required">Nhập địa chỉ</div>
+                <!--              <div *ngIf="f.email.errors.pattern">vui long nhap dung dinh dang email</div>-->
+              </div>
+            </div>
+            <div class="position-relative form-group">
+              <label for="phone">Phone</label>
+              <input formControlName="phone" type="text" pattern="(84|0[3|5|7|8|9])+([0-9]{8})\b" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && checkUpdateForm?.phone?.errors }">
+              <div *ngIf="submitted && checkUpdateForm?.phone?.errors" class="invalid-feedback">
+                <div *ngIf="checkUpdateForm?.phone?.errors?.required">Nhập số điện thoại</div>
+                <!--              <div *ngIf="f.email.errors.pattern">vui long nhap dung so dien thoai</div>-->
+              </div>
+            </div>
+            <div class="position-relative form-group">
+              <label for="address">Address</label>
+              <input formControlName="address" minlength="4" type="text" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && checkUpdateForm?.address?.errors }">
+              <div *ngIf="submitted && checkUpdateForm?.address?.errors" class="invalid-feedback">
+                <div *ngIf="checkUpdateForm?.address?.errors?.required">Nhập dia chi</div>
+                <!--              <div *ngIf="f.address.errors.required">Please enter address</div>-->
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button id="btnCloseUpdate" type="button" class="btn btn-secondary" (click)="c('Close click')">Hủy
+              </button>
+              <button type="submit" class="btn btn-primary">Lưu</button>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+      <!--Modals add user-->
+      <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">Add User</h4>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="AddUser" (ngSubmit)="onSubmit()">
+            <div class="position-relative form-group">
+              <label for="name">Name</label>
+              <input name="name" minlength="4" id="name" formControlName="name" type="text" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.name.errors}">
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Please enter name</div>
+                <div *ngIf="f.name.errors.minlength">Name must be at least 4 characters</div>
+              </div>
+            </div>
+            <div class="position-relative form-group">
+              <label for="email">Email</label>
+              <input name="email" pattern="^[\w-\._\+%]+@(?:[\w-]+\.)+[\w]{2,6}$" id="email" formControlName="email"
+                     type="text" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.email.errors}">
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Please enter email</div>
+                <div *ngIf="f.email.errors.pattern">Email must be a valid email address</div>
+              </div>
+            </div>
+            <div class="position-relative form-group">
+              <label for="phone">Phone</label>
+              <input name="phone" pattern="(84|0[3|5|7|8|9])+([0-9]{8})\b" id="phone" formControlName="phone"
+                     type="text"
+                     class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.phone.errors}">
+              <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                <div *ngIf="f.phone.errors.required">Please enter phone</div>
+                <!--              <div *ngIf="f.email.errors.pattern">Phone must be a valid phone address</div>-->
+              </div>
+            </div>
+            <div class="position-relative form-group">
+              <label for="address">Adress</label>
+              <input name="address" minlength="4" id="address" formControlName="address" type="text"
+                     class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.address.errors}">
+              <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                <div *ngIf="f.address.errors.required">Please enter address</div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="c('Close click')">Hủy</button>
+              <button type="submit" class="btn btn-primary">Thêm</button>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+      <!-- List User-->
+      <div class="btn-group-style">
+        <div class="dropdown">
+          <div class="dropdown form-control" style="height: auto" (click)="onClick()">Tìm kiếm
+            :  {{selectListItem.length}}
+            <span *ngFor="let item of selectListItem">{{item.name}}
+              <button id="close" (click)="onChange(item.id)">x</button>
+        </span>
+          </div>
+          <div class="show-item shadow">
+            <div *ngIf="show" class="search-wrapper " [class.active]="isActive" style="margin-top: 20px">
+              <div class="input-holder">
+                <input type="text" placeholder="Search...." class="search-input form-control " [(ngModel)]="name"
+                       (input)="Search()">
+              </div>
+            </div>
+            <div *ngIf="show" class="show-dropdown">
+              <div *ngFor="let item of datas">
+                <p>
+                  <input type="checkbox" [id]="item.id" [checked]="item.active" (change)="onChange(item.id)"
+                         [id]="item.id"
+                         style="margin-right: 10px">
+                  <label [for]="item.id">{{item.name}}</label>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="d-inline-flex align-items-center btn btn-success" (click)="open(content)">Add
+          user
+        </button>
+      </div>
+      <div *ngIf="show" class="main-card card main ">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="mb-0 table table-bordered">
+              <thead>
+              <tr>
+                <th>STT</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of selectListItem; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.phone}}</td>
+                <td>{{item.address}}</td>
+                <td>
+                  <svg (click)="onDeleteEvent(item.id)" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                       fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                    <path
+                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                    <path fill-rule="evenodd"
+                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                  </svg>
+                  <svg (click)="openUpdateUser({updateUser : updateUser, id : item.id})"
+                       xmlns="http://www.w3.org/2000/svg"
+                       width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"
+                       style="margin-left: 20px">
+                    <path
+                      d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd"
+                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                  </svg>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p *ngIf="datas.length == 0" style="text-align: center;margin-top: 20px;font-size: large;"> Không có user nào
+            ! </p>
+        </div>
+      </div>
+      <div *ngIf="!show" class="main-card mb-3 card content">
+        <div class="card-body">
+          <div class="table-responsive">
+            <div class="srcoll-table">
+              <table class="mb-0 table table-bordered">
+                <thead>
+                <tr>
+                  <th>STT</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Address</th>
+                  <th>Skill</th>
+                  <th>Age</th>
+                  <th>Address</th>
+                  <th>Skill</th>
+                  <th class="position-action">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of pagedItems; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.email}}</td>
+                  <td>{{item.phone}}</td>
+                  <td>{{item.address}}</td>
+                  <td>{{item.skill}}</td>
+                  <td>{{item.age}}</td>
+                  <td>{{item.address}}</td>
+                  <td>{{item.skill}}</td>
+                  <td class="position-td">
+                    <svg (click)="onDeleteEvent(item.id)" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                         fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                      <path
+                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                      <path fill-rule="evenodd"
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                    </svg>
+                    <svg (click)="openUpdateUser({updateUser : updateUser, id : item.id})"
+                         xmlns="http://www.w3.org/2000/svg"
+                         width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"
+                         style="margin-left: 20px">
+                      <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                      <path fill-rule="evenodd"
+                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                    </svg>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <div class="row justify-content-center pt-3 pb-3">
+                <div class="pagination-style col-12 col-md-8 col-lg-8">
+                  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                    <li
+                      [ngClass]="pager.currentPage === 1 ? 'pagination__item pagination__item--disabled' : 'pagination__item'">
+                      <a (click)="setPage(1)">First</a>
+                    </li>
+                    <li
+                      [ngClass]="pager.currentPage === 1 ? 'pagination__item pagination__item--disabled' : 'pagination__item'">
+                      <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                    </li>
+                    <!-- pages -->
+                    <li *ngFor="let page of pager.pages"
+                        [ngClass]="pager.currentPage === page ? 'pagination__item pagination__item--active' : 'pagination__item'">
+                      <a (click)="setPage(page)">{{page}}</a>
+                    </li>
+                    <li
+                      [ngClass]="pager.currentPage === pager.totalPages ? 'pagination__item pagination__item--disabled' : 'pagination__item'">
+                      <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                    </li>
+                    <li
+                      [ngClass]="pager.currentPage === pager.totalPages ? 'pagination__item pagination__item--disabled' : 'pagination__item'">
+                      <a (click)="setPage(pager.totalPages)">Last</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p *ngIf="datas.length == 0" style="text-align: center;margin-top: 20px;font-size: large;"> Không có user nào
+            ! </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>
+</body>

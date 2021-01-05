@@ -1,0 +1,137 @@
+.show-dropdown{
+  margin: 20px;
+  height: 170px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+.show-item{
+  margin-bottom: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #f1f1f1;
+}
+.search-wrapper{
+  margin: 20px;
+}
+#close{
+  border: none;
+  margin-right: 8px;
+}
+.form_list_checkitem{
+  z-index: 0;
+}
+.check_item{
+  z-index: 1;
+}
+.items {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.items__item {
+  margin: 1rem 0;
+  border: 1px solid lightgray;
+}
+
+.items__item--active {
+  background: lightgray;
+}
+
+.items__item:not(.items__item--active) {
+  cursor: pointer;
+}
+
+.items__item a {
+  padding: 0.5rem;
+  display: block;
+}
+
+/*.pagination {*/
+/*  display: flex;*/
+/*  max-width: 960px;*/
+/*  list-style: none;*/
+/*  padding: 0;*/
+/*  margin-top: 2rem;*/
+/*}*/
+
+.pagination__item:not(.pagination__item--disabled) {
+  color: #006BA8;
+  cursor: pointer;
+}
+
+.pagination__item a {
+  padding: 0.5rem 1rem;
+  border: 1px solid lightgray;
+}
+
+.pagination__item--active a {
+  color: #f0f0f0;
+  background: #006BA8;
+  border: 1px solid #006BA8;
+}
+.table-responsive tbody .position-td{}
+.dropdown {
+  height: 38px;
+  max-height: 38px;
+  max-width: 768px;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  /*overflow: hidden;*/
+  text-overflow: ellipsis;
+}
+#close{
+  width: 25px;
+  border-radius: 50%;
+  height: 25px;
+  color: #ffff;
+  background: #212020;
+}
+.btn-group-style{
+  display: flex;
+  width: 100%;
+  padding: 1rem 0 ;
+}
+.btn-group-style button{
+  height: 38px;
+  margin-left: 1rem;
+}
+.dropdown .show-item {
+  position: absolute;
+  z-index: 999;
+  width: 250px;
+  background: #fff;
+}
+
+.card{
+  position: unset;
+}
+.btn-group-style .dropdown .form-control { width: 100%}
+.table-responsive table{
+  height: 200px;
+  overflow-x: scroll;
+
+}
+.table-responsive  tr{
+  position: relative;
+  width: 100%;
+}
+.table-responsive  tr .position-td{
+  position: absolute;
+  height: 74px;
+  display: table-cell;
+  right: 20px;
+  background-color: #ffffff;
+}
+.position-action{
+  position: absolute;
+  display: table-cell;
+  right: 20px;
+  width: 78px;
+  background-color: #ffffff;
+}
+.srcoll-table{
+  overflow-x: scroll;
+}
