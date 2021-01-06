@@ -2,10 +2,8 @@
 <div class="container">
   <!-- Content here -->
   <div class="row">
-    <div class="col-2"></div>
 
-    <div class="col-6">
-<!--      <button *ngIf="check" (click)="logout()">Logout</button>-->
+    <div class="col-8">
       <!--Modals update user-->
       <ng-template #updateUser let-c="close" let-d="dismiss">
         <div class="modal-header">
@@ -207,6 +205,9 @@
                   <th>Age</th>
                   <th>Address</th>
                   <th>Skill</th>
+                  <th>Age</th>
+                  <th>Address</th>
+                  <th>Skill</th>
                   <th class="position-action">Action</th>
                 </tr>
                 </thead>
@@ -221,6 +222,9 @@
                   <td>{{item.age}}</td>
                   <td>{{item.address}}</td>
                   <td>{{item.skill}}</td>
+                  <td>aaa</td>
+                  <td>bbb</td>
+                  <td>cccc</td>
                   <td class="position-td">
                     <svg (click)="onDeleteEvent(item.id)" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                          fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -253,8 +257,7 @@
                       [ngClass]="pager.currentPage === 1 ? 'pagination__item pagination__item--disabled' : 'pagination__item'">
                       <a (click)="setPage(pager.currentPage - 1)">Previous</a>
                     </li>
-                    <!-- pages -->
-                    <li *ngFor="let page of pager.pages"
+                    <li *ngFor="let page of pageShow"
                         [ngClass]="pager.currentPage === page ? 'pagination__item pagination__item--active' : 'pagination__item'">
                       <a (click)="setPage(page)">{{page}}</a>
                     </li>
@@ -262,6 +265,7 @@
                       [ngClass]="pager.currentPage === pager.totalPages ? 'pagination__item pagination__item--disabled' : 'pagination__item'">
                       <a (click)="setPage(pager.currentPage + 1)">Next</a>
                     </li>
+
                     <li
                       [ngClass]="pager.currentPage === pager.totalPages ? 'pagination__item pagination__item--disabled' : 'pagination__item'">
                       <a (click)="setPage(pager.totalPages)">Last</a>
@@ -276,7 +280,6 @@
         </div>
       </div>
     </div>
-    <div class="col-2"></div>
   </div>
 </div>
 </body>

@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: '<router-outlet></router-outlet>',
 })
 export class AppComponent {
   title = 'demo';
+  constructor(private route: ActivatedRoute) {
+  }
   // tslint:disable-next-line:typedef
-  logout(){
-    localStorage.removeItem('currentUser');
+  checkURl(){
+    this.route.queryParams.subscribe((prams) =>{
+      console.log(prams);
+    });
   }
 }

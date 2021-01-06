@@ -1,29 +1,25 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule, ActivatedRoute} from '@angular/router';
 import { HomePageComponent } from './HomePage/home-page.component';
 import {ModalsComponent} from './modals/modals.component';
 import {PaginationComponent} from './pagination/pagination.component';
 import {AppComponent} from './app.component';
 import {TabComponent} from './tab/tab.component';
 import {UserComponent} from './user/user.component';
+import {PageMessageComponent} from './page-message/page-message.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomePageComponent
+    component: TabComponent
   },
   {
-    path: 'HomePage',
-    component: HomePageComponent
+    path: 'tab',
+    component: TabComponent
   },
-  {
-    path: 'user',
-    component: UserComponent
-  },
-  // {
-  //   path: 'pagination',
-  //   component: PaginationComponent
-  // },
+  { path: '**',
+    component: PageMessageComponent
+  }
 ];
 
 @NgModule({
@@ -31,4 +27,11 @@ const routes: Routes = [
   exports: [RouterModule],
   bootstrap: [AppComponent]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  constructor(private route: ActivatedRoute ) {
+   this.route.queryParams.subscribe((params) => {
+     console.log(params);
+     console.log(routes);
+   });
+  }
+}

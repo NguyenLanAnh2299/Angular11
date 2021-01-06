@@ -12,7 +12,7 @@ import {PagerService} from '../_service/pager.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'home-page-app',
+  selector: 'home-app',
   styleUrls: ['./home-page.component.css'],
   templateUrl: './home-page.component.html'
 })
@@ -29,9 +29,11 @@ export class HomePageComponent implements OnInit {
   public isActive: any;
   closeResult?: string;
   show = false;
-  check = false;
+  checkLogout = true;
   pager: any = {};
   pagedItems!: any[];
+  // @ts-ignore
+  pageShow!: number[] = [];
   // @ts-ignore
   // tslint:disable-next-line:no-input-rename
   @Input('tabTitle') title: string;
@@ -131,15 +133,27 @@ export class HomePageComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   setPage(page: number) {
+    this.pageShow = [];
     if (this.pager) {
       if (page < 1 || page > this.pager.totalPages) {
         return;
       }
     }
     // @ts-ignore
-    this.pager = this.pagerService.getPager(this.datas.length, page, true, 5 );
-    console.log('pager', this.pager);
-
+    this.pager = this.pagerService.getPager(this.datas.length, page, true, 3 );
+    console.log('pager', this.pager.pages.length);
+    if (this.pager.pages.length >= 3 &&  this.pager.currentPage > 1){
+      this.pageShow.push(this.pager.currentPage - 1);
+      this.pageShow.push(this.pager.currentPage);
+      this.pageShow.push(this.pager.currentPage + 1);
+    }
+    if (this.pager.currentPage === 1){
+      this.pageShow.push(1);
+    }
+    if (this.pager.pages.length < 3 && this.pager.currentPage > 1){
+      this.pageShow.push(this.pager.currentPage - 1);
+      this.pageShow.push(this.pager.currentPage);
+    }
     // @ts-ignore
     this.pagedItems = this.datas.slice(this.pager.startIndex, this.pager.endIndex + 1);
     console.log('pagedItems', this.pagedItems);
@@ -266,9 +280,5 @@ export class HomePageComponent implements OnInit {
   }
   async wait(ms: number): Promise<void> {
     return new Promise<void>( resolve => setTimeout( resolve, ms) );
-  }
-  // tslint:disable-next-line:typedef
-  logout(){
-    localStorage.removeItem('currentUser');
   }
 }

@@ -24,8 +24,10 @@ import {AppComponent} from '../app.component';
     NgbPaginationModule,
   ],
   providers: [],
-  entryComponents: [
-  ],
+  entryComponents: [],
 
+  exports: [
+    HomePageComponent
+  ]
 })
 export class HomePageModule{ }

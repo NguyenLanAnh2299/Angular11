@@ -10,6 +10,7 @@ import { PopupComponent } from './popup/popup.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import {PagerService} from './_service/pager.service';
 import { TabComponent } from './tab/tab.component';
+import { PageMessageComponent } from './page-message/page-message.component';
 
 
 
@@ -21,6 +22,7 @@ import { TabComponent } from './tab/tab.component';
     PopupComponent,
     PaginationComponent,
     TabComponent,
+    PageMessageComponent,
   ],
   imports: [
     BrowserModule,
