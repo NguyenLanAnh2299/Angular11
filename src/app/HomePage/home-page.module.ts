@@ -6,6 +6,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from '../app.component';
+import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
+import {HttpLoaderFactory} from '../app.module';
+
 
 
 @NgModule({
@@ -22,6 +25,13 @@ import {AppComponent} from '../app.component';
     ReactiveFormsModule,
     FormsModule,
     NgbPaginationModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   entryComponents: [],

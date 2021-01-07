@@ -44,3 +44,19 @@
 /*  border-radius:0;*/
 /*  transition:background 0.20s linear;*/
 /*}*/
+.Eng{
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuHVW8FvA5_UGEKS1HunZ3Pd7eUUQ77Lzr3g&usqp=CAU);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+}
+.Fra{
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuHVW8FvA5_UGEKS1HunZ3Pd7eUUQ77Lzr3g&usqp=CAU);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+}

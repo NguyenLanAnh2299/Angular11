@@ -1,3 +1,4 @@
+// @ts-ignore
 import {from, Observable} from 'rxjs';
 import {Component, ElementRef, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {User} from '../_model/user';
@@ -9,6 +10,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {EventEmitter} from 'events';
 import {PopupComponent} from '../popup/popup.component';
 import {PagerService} from '../_service/pager.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -46,7 +48,7 @@ export class HomePageComponent implements OnInit {
   @Output() closeModalEvent = new EventEmitter<boolean>();
 
   // tslint:disable-next-line:max-line-length
-  constructor(private homepageService: HomePageService, private modalService: NgbModal, private formBuilder: FormBuilder, private pagerService: PagerService) {
+  constructor(private homepageService: HomePageService, public translate: TranslateService,  private modalService: NgbModal, private formBuilder: FormBuilder, private pagerService: PagerService) {
     // @ts-ignore
     this.page = 1;
   }

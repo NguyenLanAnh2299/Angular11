@@ -1,0 +1,23 @@
+{
+  "Title": {
+    "Home": "집",
+    "Profile": "프로필",
+    "Contact": "접촉",
+    "Logout": "로그 아웃"
+  },
+  "Row": {
+    "Name": "이름",
+    "Email": "이메일",
+    "Phone": "전화",
+    "Address": "주소",
+    "Age": "나이",
+    "Skill": "기술",
+    "Action": "동작"
+  },
+  "TextSearch": {
+    "Search": "검색"
+  },
+  "Button": {
+    "AddUser": "사용자 추가"
+  }
+}

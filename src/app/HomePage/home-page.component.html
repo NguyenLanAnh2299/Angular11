@@ -112,7 +112,7 @@
       <!-- List User-->
       <div class="btn-group-style">
         <div class="dropdown">
-          <div class="dropdown form-control" style="height: auto" (click)="onClick()">Tìm kiếm
+          <div class="dropdown form-control" style="height: auto" (click)="onClick()">{{'TextSearch.Search' | translate}}
             :  {{selectListItem.length}}
             <span *ngFor="let item of selectListItem">{{item.name}}
               <button id="close" (click)="onChange(item.id)">x</button>
@@ -137,8 +137,7 @@
             </div>
           </div>
         </div>
-        <button type="button" class="d-inline-flex align-items-center btn btn-success" (click)="open(content)">Add
-          user
+        <button type="button" class="d-inline-flex align-items-center btn btn-success" (click)="open(content)">{{'Button.AddUser' | translate}}
         </button>
       </div>
       <div *ngIf="show" class="main-card card main ">
@@ -197,18 +196,18 @@
                 <thead>
                 <tr>
                   <th>STT</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Address</th>
-                  <th>Skill</th>
-                  <th>Age</th>
-                  <th>Address</th>
-                  <th>Skill</th>
-                  <th>Age</th>
-                  <th>Address</th>
-                  <th>Skill</th>
-                  <th class="position-action">Action</th>
+                  <th>{{'Row.Name' | translate}}</th>
+                  <th>{{'Row.Email' | translate}}</th>
+                  <th>{{'Row.Phone' | translate}}</th>
+                  <th>{{'Row.Address' | translate}}</th>
+                  <th>{{'Row.Skill' | translate}}</th>
+                  <th>{{'Row.Age' | translate}}</th>
+                  <th>{{'Row.Address' | translate}}</th>
+                  <th>{{'Row.Skill' | translate}}</th>
+                  <th>{{'Row.Age' | translate}}</th>
+                  <th>{{'Row.Address' | translate}}</th>
+                  <th>{{'Row.Skill' | translate}}</th>
+                  <th class="position-action">{{'Row.Action' | translate}}</th>
                 </tr>
                 </thead>
                 <tbody>

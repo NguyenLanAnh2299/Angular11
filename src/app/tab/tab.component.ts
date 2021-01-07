@@ -1,6 +1,7 @@
 import {Component, ContentChildren, OnInit, QueryList} from '@angular/core';
 import {HomePageService} from '../_service/home-page.service';
 import {ActivatedRoute} from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tab',
@@ -14,7 +15,13 @@ export class TabComponent implements OnInit {
   // @ts-ignore
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
 
-  constructor(private homepageService: HomePageService, private route: ActivatedRoute) { }
+  constructor(private homepageService: HomePageService, private route: ActivatedRoute, public translate: TranslateService) {
+    translate.addLangs(['en', 'fr', 'korean']);
+    translate.setDefaultLang('en');
+
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|fr|korean/) ? browserLang : 'en');
+  }
 
   ngOnInit(): void {
   }

@@ -11,6 +11,9 @@ import { PaginationComponent } from './pagination/pagination.component';
 import {PagerService} from './_service/pager.service';
 import { TabComponent } from './tab/tab.component';
 import { PageMessageComponent } from './page-message/page-message.component';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient} from '@angular/common/http';
 
 
 
@@ -27,7 +30,14 @@ import { PageMessageComponent } from './page-message/page-message.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HomePageModule
+    HomePageModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     PagerService
@@ -37,4 +47,10 @@ import { PageMessageComponent } from './page-message/page-message.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
+
+// tslint:disable-next-line:typedef
+export function HttpLoaderFactory(http: HttpClient){
+  return new TranslateHttpLoader(http);
+}
+

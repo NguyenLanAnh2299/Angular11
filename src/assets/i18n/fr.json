@@ -1,0 +1,24 @@
+{
+  "Title": {
+    "Home": "Accueil",
+    "Profile": "Profil",
+    "Contact": "Contact",
+    "Logout": "Se déconnecter"
+
+  },
+  "Row": {
+    "Name": "Nom",
+    "Email": "Email",
+    "Phone": "Téléphone",
+    "Address": "Adresse",
+    "Age": "Âge",
+    "Skill": "Compétence",
+    "Action": "Action"
+  },
+  "TextSearch": {
+    "Search": "Chercher"
+  },
+  "Button": {
+    "AddUser": "Ajouter "
+  }
+}
