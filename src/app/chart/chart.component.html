@@ -1,0 +1,26 @@
+<div class="col-8">
+  <div style="display: block; background-image: linear-gradient(to right, #dbd4d4eb , #b6b6a814);">
+    <div style="text-align: center;
+    padding-top: 20px;
+    font-weight: bold;">
+      <span style="">Biểu đồ số lượng gói CHCT RG nhà thầu tham dự trong kỳ</span>
+    </div>
+    <canvas baseChart
+            [datasets]="barChartData"
+            [options]="barChartOptions"
+            [legend]="false"
+            [chartType]="'horizontalBar'"
+            [labels]="barChartLabels">
+    </canvas>
+    <div class="row" style="margin-left: 67px;">
+      <div>
+        <input type="radio" id="huey" name="drone" value="valueYear" (change)="onChange('year')" checked  >
+        <label for="huey">Năm</label>
+      </div>
+      <div>
+        <input type="radio" id="dewey" name="drone" value="Quarter" (change)="onChange('quarter')">
+        <label for="dewey">Quý</label>
+      </div>
+    </div>
+  </div>
+</div>

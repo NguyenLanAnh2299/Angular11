@@ -134,5 +134,42 @@
   background-color: #ffffff;
 }
 .srcoll-table{
-  overflow-x: scroll;
+  overflow-x: auto;
+  overflow-y: auto;
+  height: 200px;
+}
+.relative {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: auto;
+  border: 1px solid black;
+  white-space: nowrap;
+  width: 660px;
+  height: 300px;
+  /* /* overflow: auto; */
+}
+
+.sticky-col {
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: white;
+  z-index: 100;
+}
+.sticky-col-end {
+  background-color: white;
+  right: 0;
+  position: sticky;
+}
+
+.first-col {
+  left: 0px;
+  color: black;
+}
+
+thead  th{
+  position: sticky;
+  top: 0;
+  color: #ff0000;
+  background-color: #e9ecef;
+
 }

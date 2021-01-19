@@ -142,7 +142,7 @@ export class HomePageComponent implements OnInit {
       }
     }
     // @ts-ignore
-    this.pager = this.pagerService.getPager(this.datas.length, page, true, 3 );
+    this.pager = this.pagerService.getPager(this.datas.length, page, true, 9 );
     console.log('pager', this.pager.pages.length);
     if (this.pager.pages.length >= 3 &&  this.pager.currentPage > 1){
       this.pageShow.push(this.pager.currentPage - 1);

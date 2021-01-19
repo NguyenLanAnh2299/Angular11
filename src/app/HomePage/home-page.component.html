@@ -187,14 +187,14 @@
             ! </p>
         </div>
       </div>
-      <div *ngIf="!show" class="main-card mb-3 card content">
+      <div *ngIf="!show" class="main-card mb-3 card content relative">
         <div class="card-body">
           <div class="table-responsive">
             <div class="srcoll-table">
               <table class="mb-0 table table-bordered">
-                <thead>
+                <thead class="head-table" >
                 <tr>
-                  <th>STT</th>
+                  <th class="sticky-col first-col">STT</th>
                   <th>{{'Row.Name' | translate}}</th>
                   <th>{{'Row.Email' | translate}}</th>
                   <th>{{'Row.Phone' | translate}}</th>
@@ -206,7 +206,7 @@
                   <th>{{'Row.Age' | translate}}</th>
                   <th>{{'Row.Address' | translate}}</th>
                   <th>{{'Row.Skill' | translate}}</th>
-                  <th class="position-action">{{'Row.Action' | translate}}</th>
+                  <th class="sticky-col-end first-col" style="z-index: 1000">{{'Row.Action' | translate}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -223,7 +223,7 @@
                   <td>aaa</td>
                   <td>bbb</td>
                   <td>cccc</td>
-                  <td class="position-td">
+                  <td class="sticky-col-end first-col">
                     <svg (click)="onDeleteEvent(item.id)" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                          fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                       <path
