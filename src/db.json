@@ -1,46 +1,54 @@
 {
-  "totalResult": 25,
-  "perPage": 5,
-  "currentPage": 1,
-  "firstPage": 1,
-  "lastPage": 5,
-  "from": 1,
-  "to": 5,
-  "data": [
+  "Chart": [
     {
-      "id": 1,
-      "name": "Nguyễn Minh Tiến",
-      "email": "tien@gmail.com",
-      "address": "Hà Nội",
-      "phone": "098765442"
+      "name": "Nha Thau 1",
+      "year": 100,
+      "quarter": {
+        "quarter_1": 20,
+        "quarter_2": 25,
+        "quarter_3": 35,
+        "quarter_4": 40
+      }
     },
     {
-      "id": 1,
-      "name": "Nguyễn Minh ",
-      "email": "minh@gmail.com",
-      "address": "Hà Nội",
-      "phone": "098765442"
+      "name": "Nha Thau 2",
+      "year": 90,
+      "quarter": {
+        "quarter_1": 20,
+        "quarter_2": 25,
+        "quarter_3": 35,
+        "quarter_4": 40
+      }
     },
     {
-      "id": 1,
-      "name": "Nguyễn Minh Tiến",
-      "email": "tien@gmail.com",
-      "address": "Hà Nội",
-      "phone": "098765442"
+      "name": "Nha Thau 3",
+      "year": 80,
+      "quarter": {
+        "quarter_1": 20,
+        "quarter_2": 25,
+        "quarter_3": 35,
+        "quarter_4": 40
+      }
     },
     {
-      "id": 1,
-      "name": "Nguyễn Minh Tiến",
-      "email": "tien@gmail.com",
-      "address": "Hà Nội",
-      "phone": "098765442"
+      "name": "Nha Thau 4",
+      "year": 70,
+      "quarter": {
+        "quarter_1": 20,
+        "quarter_2": 25,
+        "quarter_3": 35,
+        "quarter_4": 40
+      }
     },
     {
-      "id": 1,
-      "name": "Nguyễn Minh Tiến",
-      "email": "tien@gmail.com",
-      "address": "Hà Nội",
-      "phone": "098765442"
+      "name": "Nha Thau 5",
+      "year": 60,
+      "quarter": {
+        "quarter_1": 20,
+        "quarter_2": 25,
+        "quarter_3": 35,
+        "quarter_4": 40
+      }
     }
   ]
 }

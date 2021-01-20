@@ -31,7 +31,7 @@ export class ChartComponent implements OnInit {
   public barChartLabelQuater;
   public barChartLegend = true;
   public barChartData: any[] = [
-    // {data: [], label: 'Năm',  backgroundColor: 'rgba(0,123,255,0.56)' },
+    {data: [], label: 'Năm',  backgroundColor: 'rgba(0,123,255,0.56)' },
     // { data: [], label: 'Quý 1'},
     // { data: [], label: 'Quý 2'},
     // { data: [], label: 'Quý3'},
@@ -47,7 +47,6 @@ export class ChartComponent implements OnInit {
   constructor(private chartService: ChartService) {
     // tslint:disable-next-line:label-position
   }
-
 // tslint:disable-next-line:typedef
   ngOnInit() {
     // tslint:disable-next-line:label-position
@@ -92,11 +91,12 @@ export class ChartComponent implements OnInit {
       // });
     });
   }
+
   // tslint:disable-next-line:typedef
   onChange(modeCase: string){
     // @ts-ignore
     this.barChartData = [];
-    console.log('barChartData222:::', this.barChartData)
+    console.log('barChartData222:::', this.barChartData);
     if (!this.valueYear){
       this.valueYear = true;
     }
@@ -107,8 +107,8 @@ export class ChartComponent implements OnInit {
     }
     // console.log(this.valueYear);
     if (modeCase === 'year'){
-      //  case year
 
+      //  case year
       this.barChartLabels.forEach((key: any) => {
         console.log('data:::', key);
         this.barChartData.push({
@@ -131,7 +131,7 @@ export class ChartComponent implements OnInit {
       //  case quarter
       this.barChartLabels.forEach((data: any) => {
         console.log('data:::', data);
-        const quarterList = Object.entries(this.dataSource[data].Quarter);
+        const quarterList = Object.values(this.dataSource[data].Quarter);
         const quarterLabel = Object.keys(this.dataSource[data].Quarter);
         console.log('quarterList:::', quarterList);
         console.log('quarterLabel:::', quarterLabel);
