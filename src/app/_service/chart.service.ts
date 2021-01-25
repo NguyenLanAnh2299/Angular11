@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {observableToBeFn} from 'rxjs/internal/testing/TestScheduler';
 import {HttpClient} from '@angular/common/http';
+import { CompanyReportResponse } from '../_model/chart';
 
 
 const chartUrl = 'http://localhost:3000/Chart';
+// const chartUrl = 'http://127.0.0.1:5500/src/db.json';
 @Injectable({
   providedIn: 'root'
 })
@@ -57,11 +59,21 @@ export class ChartService {
           Quarter3: 15,
           Quarter4: 40
         }
+      },
+	  Contractors5: {
+        volumeSales: '60',
+        Quarter:  {
+          Quarter1: 10,
+          Quarter2: 35,
+          Quarter3: 15,
+          Quarter4: 40
+        }
       }
+	  
     });
   }
   // hhhhhhhhhhhhhhhhhhhhhhhhhhhh
-  getDataChart(): Observable<Chart[]> {
-    return this.httpClient.get<Chart[]>(chartUrl);
+  getDataChart(): Observable<CompanyReportResponse> {
+    return this.httpClient.get<CompanyReportResponse>(chartUrl);
   }
 }
